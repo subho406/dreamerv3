@@ -111,11 +111,12 @@ def make_logger(parsed, logdir, step, config):
       embodied.logger.TerminalOutput(config.filter),
       embodied.logger.JSONLOutput(logdir, 'metrics.jsonl'),
       embodied.logger.JSONLOutput(logdir, 'scores.jsonl', 'episode/score'),
-      embodied.logger.TensorBoardOutput(logdir),
-      # embodied.logger.WandBOutput(logdir.name, config),
+      #embodied.logger.TensorBoardOutput(logdir),
+     embodied.logger.WandBOutput(config.filter,logdir, config),
       # embodied.logger.MLFlowOutput(logdir.name),
   ], multiplier)
   return logger
+
 
 
 def make_replay(
